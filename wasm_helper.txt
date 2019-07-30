@@ -1,0 +1,29 @@
+RUN:
+cargo generate --git https://github.com/rustwasm/wasm-pack-template
+RUN:
+wasm-pack build
+RUN:
+npm init wasm-app www
+
+RUN:
+cd www
+RUN:
+npm install
+
+EDIT wasm-game-of-life/www/package.json
+{
+  // ...
+  "dependencies": {
+    "wasm-game-of-life": "file:../pkg", // Add this line!
+    // ...
+  }
+}
+
+EDIT wasm-game-of-life/www/index.js
+CHANGE import * as wasm from './wasm_game_of_life_bg.wasm';
+
+RUN:
+npm install
+RUN:
+npm run start
+
