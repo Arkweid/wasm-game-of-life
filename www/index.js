@@ -5,12 +5,10 @@ const universe = Universe.new();
 
 const renderLoop = () => {
   pre.textContent = universe.render();
+
   universe.tick();
-  setTimeout(func, 1000);
+
+  requestAnimationFrame(renderLoop);
 };
 
 requestAnimationFrame(renderLoop);
-
-function func() {
-    requestAnimationFrame(renderLoop);
-}
