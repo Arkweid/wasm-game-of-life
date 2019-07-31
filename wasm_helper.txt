@@ -87,15 +87,14 @@ const universe = Universe.new();
 
 const renderLoop = () => {
   pre.textContent = universe.render();
+
   universe.tick();
-  setTimeout(func, 1000);
+
+  requestAnimationFrame(renderLoop);
 };
 
 requestAnimationFrame(renderLoop);
 
-function func() {
-    requestAnimationFrame(renderLoop);
-}
 
 # glider
 if i == width/2 * height/2 + width/2 || i == width/2 * height/2 + width/2 + 1 || i == width/2 * height/2 + width/2 + 2 || i == width/2 * height/2 - width/2 + 2 || i == width/2 * height/2 - 2*width + 1 + width/2 {
